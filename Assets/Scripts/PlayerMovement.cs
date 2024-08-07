@@ -60,12 +60,13 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce/2f);
+            score += 5f;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Collectable"))
         {
             Destroy(collision.gameObject);
-            score += 10;
+            score += 10f;
         }
         if (collision.gameObject.CompareTag("Trap"))
         {
@@ -75,6 +76,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(collision.gameObject);
             health += 1;
+        }
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            SceneManager.LoadScene("GameOverFinish");
         }
     }
     private void IsGrounded()
@@ -102,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         health -= 1;
         if (health <= 0)
         {
-            SceneManager.LoadScene("GameOverLose");
+            SceneManager.LoadScene("Level");
         }
     }
 }
