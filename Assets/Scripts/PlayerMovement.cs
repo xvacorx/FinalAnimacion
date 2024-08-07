@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SearchService;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Finish"))
         {
-            SceneManager.LoadScene("GameOverFinish");
+            SceneManager.LoadScene("GameOver");
         }
     }
     private void IsGrounded()
